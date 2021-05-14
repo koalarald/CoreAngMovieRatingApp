@@ -1,0 +1,11 @@
+<p>moviesratingspeople works!</p>
+<ul >
+    <li *ngFor="let character of charactersArray"
+      >
+        <span >{{ character.name }}</span>{{ character.hair_color }}
+        <input type="text" id="item-input" #newItem>
+      <button class="btn btn-outline-info" (click)="peopleEventGenerated(newItem.value)">
+          People Event
+      </button>
+    </li>
+  </ul>

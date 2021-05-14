@@ -1,0 +1,77 @@
+
+
+
+<h2>Movies</h2>
+<ul >
+  <li *ngFor="let viewmovieitem of viewmoviesratings$ | async"
+    >
+    <a [routerLink]="['/movies-ratings-details', viewmovieitem.id]" routerLinkActive="active">
+      <span >{{ viewmovieitem.id }}</span>{{ viewmovieitem.title }}
+    </a>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="gotoViewMovie(viewmovieitem)" >{{ viewmovieitem.title }}</button>
+  </li>
+</ul>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>
+     Title
+  </th>
+  <th>
+      Rating
+  </th>
+  <th>
+      Episode ID
+  </th>
+
+  <th>
+      Director
+  </th>
+  <th>
+      Producer
+  </th>
+  <th>
+      Release date
+  </th>
+  <th>
+    Go to Details
+</th>
+</tr>
+<tr *ngFor="let viewmovieitem of viewmoviesratings$ | async">
+  <td>
+    <span >{{ viewmovieitem.title }}</span>
+</td>
+<td>
+   <span> {{ viewmovieitem.rating }}</span>
+</td>
+
+<td>
+  <span> {{ viewmovieitem.episode_id }}</span> 
+</td>
+
+<td>
+  <span> {{ viewmovieitem.director }}</span>  
+</td>
+<td>
+  <span> {{ viewmovieitem.producer }}</span>   
+</td>
+<td>
+  <span> {{ viewmovieitem.release_date }}</span>    
+</td>
+
+<td>
+    <a [routerLink]="['/movies-ratings-details', viewmovieitem.id]" routerLinkActive="active">
+      <span >{{ viewmovieitem.id }}</span>{{ viewmovieitem.title }}
+    </a>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="gotoViewMovie(viewmovieitem)" >{{ viewmovieitem.title }}</button>
+</td>
+</tr>
+</thead>
+<tbody>
+
+
+  
+</tbody>
+</table>
+<p>moviesratingslist works222!</p>

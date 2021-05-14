@@ -1,0 +1,83 @@
+  <!-- Reactive forms-->
+<!-- <div *ngIf="viewmoviesrating$ | async; else loadingTemplate" formGroupName="viemovieForm" (ngSubmit)="SaveViewMovie()"> -->
+  <div *ngIf="viewmoviesrating$ | async; else loadingTemplate" [formGroup]="viemovieForm" (ngSubmit)="SaveViewMovie()">
+    <h3>Some Movie</h3>
+    <div class="container">
+      <div class="form-group" hidden>
+        <label>
+            ID:
+          <input class="form-control" type="text" formControlName="id"/>
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="rating">
+          Rating:
+        <input id="rating" class="form-control" type="text" formControlName="rating" required />
+        <!-- <div
+            *ngIf="viemovieForm.controls.rating.errors?.required && viemovieForm.controls.rating.touched"
+            class="error"
+          >
+            *Required
+          </div> -->
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+          title:
+        <input class="form-control" type="text" formControlName="title" readonly/>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+          episode_id:
+        <input class="form-control" type="text" formControlName="episode_id" readonly/>
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+          opening_crawl:
+        <input class="form-control" type="text" formControlName="opening_crawl" readonly/>
+      </label>
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="SaveViewMovie()" [disabled]="!viemovieForm.valid">Save Movie Rating</button>
+  </div>
+    <!-- <div *ngFor="let viewmovieitem of viewmoviesrating$ | async"> -->
+      <app-moviesratingspeople [charactersArray]="viewMovieLoaded.charactersList"
+      (newPeopleEvent)="WorkWithPeopleEvent($event)">
+       </app-moviesratingspeople>
+    <!-- </div> -->
+  </div>
+
+  
+
+  <!-- Template driven forms-->
+  <div *ngIf="viewmoviesrating$ | async as viewmovieR">
+    <h3>Same Movie Loaded</h3>
+  
+    <label>
+        id:{{ viewmovieR.id }}
+     
+    </label>
+  
+    <label>
+        title: {{ viewmovieR.title }}
+     
+    </label>
+    
+    <label>
+        episode_id: {{ viewmovieR.episode_id }}
+      
+    </label>
+  
+    <label>
+        opening_crawl: {{ viewmovieR.opening_crawl }}
+      
+    </label>
+  </div>
+  <span *ngIf="viewmoviesrating$ | async as viewmovieR" >{{ viewmovieR.id }}{{ viewmovieR.title }}</span>
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="SaveViewMovie()" >Save Movie Rating</button>
+<p>moviesratingsdetails works!</p>
+<ng-template #loadingTemplate>
+  Loading Movie Details...
+</ng-template>
+
